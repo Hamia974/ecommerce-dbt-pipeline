@@ -1,0 +1,27 @@
+version: 2
+
+sources:
+  - name: ecommerce
+    database: ecommerce_db
+    schema: public
+
+    tables:
+      - name: orders
+
+        columns:
+          - name: order_id
+            data_tests:
+              - not_null
+              - unique
+
+          - name: customer_id
+            data_tests:
+              - not_null
+
+          - name: status
+            data_tests:
+              - not_null
+              - accepted_values:
+                  arguments:
+                    values:
+                      - completed
